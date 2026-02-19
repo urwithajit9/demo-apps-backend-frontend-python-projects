@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/docs/introduction/refactoring",
+  "unique_key": "https://crawlee.dev/docs/introduction/refactoring",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "2WAaGkcMm0upO56",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/docs/introduction/refactoring\",\n  \"unique_key\": \"https://crawlee.dev/docs/introduction/refactoring\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {\n    \"__crawlee\": {\n      \"state\": \"RequestState.REQUEST_HANDLER\"\n    }\n  },\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": \"https://crawlee.dev/docs/introduction/refactoring\",\n  \"handled_at\": \"2024-08-06 08:00:57.553801+00:00\",\n  \"id\": \"2WAaGkcMm0upO56\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": null
+}

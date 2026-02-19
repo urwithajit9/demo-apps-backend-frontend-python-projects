@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/core/class/Logger",
+  "unique_key": "https://crawlee.dev/api/core/class/logger",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "poZ5FxCtj1i9XTJ",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/core/class/Logger\",\n  \"unique_key\": \"https://crawlee.dev/api/core/class/logger\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"poZ5FxCtj1i9XTJ\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931249068.536043"
+}

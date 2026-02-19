@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/docs/3.7/guides/proxy-management",
+  "unique_key": "https://crawlee.dev/docs/3.7/guides/proxy-management",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "UVII49PecS2Q1DC",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/docs/3.7/guides/proxy-management\",\n  \"unique_key\": \"https://crawlee.dev/docs/3.7/guides/proxy-management\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"UVII49PecS2Q1DC\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931253899.472952"
+}

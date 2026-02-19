@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/core/interface/DatasetMapper",
+  "unique_key": "https://crawlee.dev/api/core/interface/datasetmapper",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "7yrFt7z7UPlV8mM",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/core/interface/DatasetMapper\",\n  \"unique_key\": \"https://crawlee.dev/api/core/interface/datasetmapper\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"7yrFt7z7UPlV8mM\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931249098.181009"
+}

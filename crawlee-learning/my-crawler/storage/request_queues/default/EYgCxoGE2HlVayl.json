@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/core/interface/RecordOptions",
+  "unique_key": "https://crawlee.dev/api/core/interface/recordoptions",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "EYgCxoGE2HlVayl",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/core/interface/RecordOptions\",\n  \"unique_key\": \"https://crawlee.dev/api/core/interface/recordoptions\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"EYgCxoGE2HlVayl\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931249120.003939"
+}

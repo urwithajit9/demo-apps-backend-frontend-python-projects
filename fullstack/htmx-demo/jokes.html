@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTMX Joke Fetcher</title>
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 2rem;
+      }
+      button {
+        padding: 0.6rem 1.2rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #output {
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Want a Random Joke?</h2>
+    <button
+      hx-get="https://v2.jokeapi.dev/joke/Any?format=txt&safe-mode"
+      hx-target="#output"
+    >
+      Click Me
+    </button>
+
+    <p id="output">Your joke will appear here...</p>
+  </body>
+</html>

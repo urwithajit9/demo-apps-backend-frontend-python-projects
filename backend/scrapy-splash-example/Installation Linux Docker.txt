@@ -1,0 +1,22 @@
+Installation
+Linux + Docker
+
+    Install Docker. Make sure Docker version >= 17 is installed.
+
+    Pull the image:
+
+    $ sudo docker pull scrapinghub/splash
+
+    Start the container:
+
+    $ sudo docker run -it -p 8050:8050 --rm scrapinghub/splash
+    
+    
+    
+    Usage:
+    
+    curl --location 'http://0.0.0.0:8050/render.html' \
+--header 'content-type: application/json' \
+--data '{"url": "https://www.upstreamonline.com/field-development/chinese-contractor-in-210-million-deal-to-revamp-africa-gas-field/2-1-1703068"}'
+
+

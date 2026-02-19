@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/docs/guides/cheerio-crawler-guide",
+  "unique_key": "https://crawlee.dev/docs/guides/cheerio-crawler-guide",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "DhzR14A9dk9Xm5z",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/docs/guides/cheerio-crawler-guide\",\n  \"unique_key\": \"https://crawlee.dev/docs/guides/cheerio-crawler-guide\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {\n    \"__crawlee\": {\n      \"state\": \"RequestState.REQUEST_HANDLER\"\n    }\n  },\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": \"https://crawlee.dev/docs/guides/cheerio-crawler-guide\",\n  \"handled_at\": \"2024-08-06 08:00:53.573719+00:00\",\n  \"id\": \"DhzR14A9dk9Xm5z\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": null
+}

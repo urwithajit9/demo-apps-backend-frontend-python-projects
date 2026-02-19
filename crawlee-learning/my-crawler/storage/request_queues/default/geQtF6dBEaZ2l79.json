@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/3.2/cheerio-crawler/class/CheerioCrawler",
+  "unique_key": "https://crawlee.dev/api/3.2/cheerio-crawler/class/cheeriocrawler",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "geQtF6dBEaZ2l79",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/3.2/cheerio-crawler/class/CheerioCrawler\",\n  \"unique_key\": \"https://crawlee.dev/api/3.2/cheerio-crawler/class/cheeriocrawler\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"geQtF6dBEaZ2l79\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931251953.754902"
+}

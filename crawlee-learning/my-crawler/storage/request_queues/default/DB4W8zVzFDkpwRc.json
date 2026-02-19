@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/utils/interface/OpenGraphProperty",
+  "unique_key": "https://crawlee.dev/api/utils/interface/opengraphproperty",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "DB4W8zVzFDkpwRc",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/utils/interface/OpenGraphProperty\",\n  \"unique_key\": \"https://crawlee.dev/api/utils/interface/opengraphproperty\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"DB4W8zVzFDkpwRc\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931254832.411051"
+}

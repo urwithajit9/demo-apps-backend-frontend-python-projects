@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/docs/guides/result-storage",
+  "unique_key": "https://crawlee.dev/docs/guides/result-storage",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "VKm2E6I9yVvoWsU",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/docs/guides/result-storage\",\n  \"unique_key\": \"https://crawlee.dev/docs/guides/result-storage\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {\n    \"__crawlee\": {\n      \"state\": \"RequestState.REQUEST_HANDLER\"\n    }\n  },\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": \"https://crawlee.dev/docs/guides/result-storage\",\n  \"handled_at\": \"2024-08-06 08:00:54.431333+00:00\",\n  \"id\": \"VKm2E6I9yVvoWsU\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": null
+}

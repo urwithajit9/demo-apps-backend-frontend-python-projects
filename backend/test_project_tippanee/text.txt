@@ -1,0 +1,4 @@
+curl -X POST http://localhost:8000/api/comments/ \
+-H "Authorization: Token 0796c14993a85fb5411af0c8c122a4e37bb02c0c" \
+-H "Content-Type: application/json" \
+-d '{"content_type":"user","object_id":1,"content":"Test comment","parent":null}'

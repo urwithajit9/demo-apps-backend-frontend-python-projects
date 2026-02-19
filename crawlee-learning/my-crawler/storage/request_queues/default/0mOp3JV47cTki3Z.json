@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/core/enum/EnqueueStrategy",
+  "unique_key": "https://crawlee.dev/api/core/enum/enqueuestrategy",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "0mOp3JV47cTki3Z",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/core/enum/EnqueueStrategy\",\n  \"unique_key\": \"https://crawlee.dev/api/core/enum/enqueuestrategy\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {\n    \"__crawlee\": {\n      \"state\": \"RequestState.REQUEST_HANDLER\"\n    }\n  },\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": \"https://crawlee.dev/api/core/enum/EnqueueStrategy\",\n  \"handled_at\": \"2024-08-06 08:00:59.043971+00:00\",\n  \"id\": \"0mOp3JV47cTki3Z\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": null
+}

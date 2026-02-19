@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/utils/namespace/social",
+  "unique_key": "https://crawlee.dev/api/utils/namespace/social",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "x0eJbaaqKwyslxC",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/utils/namespace/social\",\n  \"unique_key\": \"https://crawlee.dev/api/utils/namespace/social\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {\n    \"__crawlee\": {\n      \"state\": \"RequestState.REQUEST_HANDLER\"\n    }\n  },\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": \"https://crawlee.dev/api/utils/namespace/social\",\n  \"handled_at\": \"2024-08-06 08:00:54.928991+00:00\",\n  \"id\": \"x0eJbaaqKwyslxC\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": null
+}

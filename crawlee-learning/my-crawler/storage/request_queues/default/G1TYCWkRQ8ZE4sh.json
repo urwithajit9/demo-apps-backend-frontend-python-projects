@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler",
+  "unique_key": "https://crawlee.dev/api/cheerio-crawler/class/cheeriocrawler",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "G1TYCWkRQ8ZE4sh",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler\",\n  \"unique_key\": \"https://crawlee.dev/api/cheerio-crawler/class/cheeriocrawler\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {\n    \"__crawlee\": {\n      \"state\": \"RequestState.REQUEST_HANDLER\"\n    }\n  },\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": \"https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler\",\n  \"handled_at\": \"2024-08-06 08:00:58.573281+00:00\",\n  \"id\": \"G1TYCWkRQ8ZE4sh\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": null
+}

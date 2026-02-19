@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/api/core/class/SitemapRequestList",
+  "unique_key": "https://crawlee.dev/api/core/class/sitemaprequestlist",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "nSZzoOp76uu12kj",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/api/core/class/SitemapRequestList\",\n  \"unique_key\": \"https://crawlee.dev/api/core/class/sitemaprequestlist\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"nSZzoOp76uu12kj\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931249079.890013"
+}

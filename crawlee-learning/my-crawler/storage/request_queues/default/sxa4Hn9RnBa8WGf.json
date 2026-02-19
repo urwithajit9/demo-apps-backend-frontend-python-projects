@@ -1,0 +1,15 @@
+{
+  "url": "https://crawlee.dev/docs/3.4/guides/request-storage",
+  "unique_key": "https://crawlee.dev/docs/3.4/guides/request-storage",
+  "method": "GET",
+  "payload": null,
+  "headers": {},
+  "user_data": {},
+  "retry_count": 0,
+  "no_retry": false,
+  "loaded_url": null,
+  "handled_at": null,
+  "id": "sxa4Hn9RnBa8WGf",
+  "json_": "{\n  \"url\": \"https://crawlee.dev/docs/3.4/guides/request-storage\",\n  \"unique_key\": \"https://crawlee.dev/docs/3.4/guides/request-storage\",\n  \"method\": \"GET\",\n  \"payload\": null,\n  \"headers\": {},\n  \"user_data\": {},\n  \"retry_count\": 0,\n  \"no_retry\": false,\n  \"loaded_url\": null,\n  \"handled_at\": null,\n  \"id\": \"sxa4Hn9RnBa8WGf\",\n  \"json_\": null,\n  \"order_no\": null\n}",
+  "order_no": "1722931251553.014040"
+}
