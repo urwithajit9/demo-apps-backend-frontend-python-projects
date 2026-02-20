@@ -1,0 +1,23 @@
+[32m2024-09-19 17:29:12 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - LOGS_CAPTURED - Started capturing logs in process (pid: 102476).
+[32m2024-09-19 17:29:12 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - hackernews_top_stories - STEP_START - Started execution of step "hackernews_top_stories".
+[32m2024-09-19 17:29:12 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - hackernews_top_stories - Loading file from: /home/ajit/Documents/datascraping-workflow-management/dagster-pipleline/dagster-tutorial/tmp20lfed4o/storage/hackernews_top_story_ids using PickledObjectFilesystemIOManager...
+[32m2024-09-19 17:29:12 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - hackernews_top_stories - LOADED_INPUT - Loaded input "hackernews_top_story_ids" using input manager "io_manager", from output "result" of step "hackernews_top_story_ids"
+[32m2024-09-19 17:29:12 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - hackernews_top_stories - STEP_INPUT - Got input "hackernews_top_story_ids" of type "Any". (Type check passed).
+[32m2024-09-19 17:29:16 +0900[0m - dagster - [34mINFO[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - hackernews_top_stories -                                                    0  ...                                                  2
+0   Have you ever seen soldering this close? [video]  ...                                                zdw
+1     https://blog.torproject.org/tor-is-still-safe/  ...                                      Sami_Lehtinen
+2  https://github.com/rspeer/wordfreq/blob/master...  ...                   Why wordfreq will not be updated
+3                                          rootforce  ...          https://dtinth.github.io/comic-mono-font/
+4  https://www.nintendo.co.jp/corporate/release/e...  ...  Nintendo Files Suit for Infringement of Patent...
+5                                           benbreen  ...  https://www.historytoday.com/archive/great-deb...
+6                                             taikon  ...                               Llama 3.1 Omni Model
+7  Ruby-SAML pwned by XML signature wrapping attacks  ...                                            ucarion
+8                                            gkucsko  ...               https://github.com/kyutai-labs/moshi
+9  https://www.theverge.com/2024/9/18/24247122/gm...  ...                                        ivewonyoung
+
+[10 rows x 3 columns]
+[32m2024-09-19 17:29:16 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - hackernews_top_stories - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2024-09-19 17:29:16 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - hackernews_top_stories - Writing file at: /home/ajit/Documents/datascraping-workflow-management/dagster-pipleline/dagster-tutorial/tmp20lfed4o/storage/hackernews_top_stories using PickledObjectFilesystemIOManager...
+[32m2024-09-19 17:29:16 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - hackernews_top_stories - ASSET_MATERIALIZATION - Materialized value hackernews_top_stories.
+[32m2024-09-19 17:29:16 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - hackernews_top_stories - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2024-09-19 17:29:16 +0900[0m - dagster - [34mDEBUG[0m - __ASSET_JOB - 986a6608-55b7-45ef-a659-5df3c81071dd - 102476 - hackernews_top_stories - STEP_SUCCESS - Finished execution of step "hackernews_top_stories" in 4.73s.
