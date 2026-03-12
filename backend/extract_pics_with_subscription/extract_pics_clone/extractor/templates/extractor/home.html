@@ -1,0 +1,159 @@
+{% extends 'extractor/base.html' %}
+
+{% block title %}Image Extractor - Extract images from any public website{% endblock %}
+
+{% block content %}
+<div class="gradient-bg py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h1 class="text-5xl font-bold text-white mb-4">Extract images</h1>
+        <p class="text-xl text-white opacity-90 mb-12">from any public website</p>
+        
+        <!-- Extraction Form -->
+        <div class="bg-white rounded-lg shadow-xl p-8 max-w-2xl mx-auto">
+            <div class="flex mb-6">
+                <button class="bg-gray-100 text-gray-700 px-6 py-3 rounded-l-lg font-medium border-r border-gray-200">
+                    Single Site
+                </button>
+                <button class="bg-gray-50 text-gray-500 px-6 py-3 rounded-r-lg font-medium" disabled>
+                    Multiple Sites
+                </button>
+            </div>
+            
+            <form method="post" action="{% url 'extract' %}" class="space-y-4">
+                {% csrf_token %}
+                <div class="flex">
+                    <div class="flex-1 relative">
+                        <i class="fas fa-link absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input 
+                            type="url" 
+                            name="url" 
+                            placeholder="Enter any URL, like google.com" 
+                            class="w-full pl-10 pr-4 py-4 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            required
+                        >
+                    </div>
+                    <button 
+                        type="submit" 
+                        class="btn-primary text-white px-8 py-4 rounded-r-lg font-medium hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                    >
+                        Extract
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Find Every Image -->
+            <div class="text-center card-hover bg-white p-6 rounded-lg shadow-md">
+                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-search text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Find Every Image</h3>
+                <p class="text-gray-600">
+                    We use many different methods and strategies to find all relevant images on a website. 
+                    This includes background images, dynamically loaded or embedded images and SVG elements.
+                </p>
+            </div>
+            
+            <!-- Automatic Image Analysis -->
+            <div class="text-center card-hover bg-white p-6 rounded-lg shadow-md">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-cog text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Automatic Image Analysis</h3>
+                <p class="text-gray-600">
+                    Every discovered image is analysed to find its dimensions, type, size and name. 
+                    With more advanced features to come in the future.
+                </p>
+            </div>
+            
+            <!-- Useful Tools -->
+            <div class="text-center card-hover bg-white p-6 rounded-lg shadow-md">
+                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-tools text-purple-600 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-900 mb-3">Useful Tools</h3>
+                <p class="text-gray-600">
+                    View all images in a grid or list, search for specific ones by name, filter by type 
+                    and sort by width, height and other properties to find exactly what you are looking for.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- How it works -->
+<div class="py-16 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">How it works</h2>
+        
+        <div class="prose prose-lg mx-auto text-gray-600">
+            <p>
+                Extract.pics is an easy to use tool that allows you to extract, view and download images from any public website. 
+                Simply paste the URL of the website into the input field and click "Extract" to start the process. 
+                After a few seconds you will see most or even all of the images found on the website.
+            </p>
+            
+            <p>
+                You can view the found images in a grid or list and explore them by <strong>sorting</strong> them by name, type, 
+                dimensions, width, height or the actual file size. Additionally you can <strong>search</strong> for images by their name, 
+                size or type/file format. This makes it really easy to find exactly the images you need.
+            </p>
+            
+            <p>
+                In case some images are very bright, you can <strong>switch to a dark background</strong> to make them more visible. 
+                You can use the <strong>copy the URL</strong> of one or more images by clicking the link icon or the Copy selected URLs button. 
+                You can also very easily <strong>download</strong> individual images or <strong>multiple images</strong> at once by selecting them 
+                and then downloading them all in a <strong>ZIP archive</strong>.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Extractions (for logged in users) -->
+{% if user.is_authenticated and recent_extractions %}
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-8">Your Recent Extractions</h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for extraction in recent_extractions %}
+            <div class="card-hover bg-white border border-gray-200 rounded-lg p-6">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm font-medium text-gray-500">{{ extraction.timestamp|date:"M d, Y" }}</span>
+                    <span class="px-2 py-1 text-xs rounded-full 
+                        {% if extraction.status == 'completed' %}bg-green-100 text-green-800
+                        {% elif extraction.status == 'failed' %}bg-red-100 text-red-800
+                        {% elif extraction.status == 'processing' %}bg-yellow-100 text-yellow-800
+                        {% else %}bg-gray-100 text-gray-800{% endif %}">
+                        {{ extraction.status|title }}
+                    </span>
+                </div>
+                
+                <h3 class="font-medium text-gray-900 mb-2 truncate">{{ extraction.url }}</h3>
+                <p class="text-sm text-gray-600 mb-4">{{ extraction.images.count }} images found</p>
+                
+                {% if extraction.status == 'completed' %}
+                <a href="{% url 'results' extraction.id %}" class="text-purple-600 hover:text-purple-800 text-sm font-medium">
+                    View Results <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-8">
+            <a href="{% url 'dashboard' %}" class="text-purple-600 hover:text-purple-800 font-medium">
+                View All Extractions <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+

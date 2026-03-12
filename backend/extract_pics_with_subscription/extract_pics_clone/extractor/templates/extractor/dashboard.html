@@ -1,0 +1,425 @@
+{% extends 'extractor/base.html' %}
+
+{% block title %}Dashboard - Image Extractor{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Header -->
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+        <p class="text-gray-600 mt-1">Welcome back, {{ user.username }}!</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="grid md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Total Extractions</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ stats.total_extractions }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Images Extracted</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ stats.total_images }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div class="flex items-center">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-gray-600">Completed</p>
+                    <p class="text-2xl font-bold text-gray-900">{{ stats.completed_extractions }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Extract -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-8">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-900">Quick Extract</h2>
+        </div>
+        <div class="p-6">
+            <form method="post" action="{% url 'extract' %}" class="flex gap-4">
+                {% csrf_token %}
+                <div class="flex-1">
+                    <input type="url" name="url" placeholder="Enter any URL to extract images..." 
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <button type="submit" 
+                        class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors">
+                    Extract
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- API Keys Management -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 mb-8">
+        <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+            <div>
+                <h2 class="text-lg font-semibold text-gray-900">API Keys</h2>
+                <p class="text-sm text-gray-500">Manage your API keys for programmatic access</p>
+            </div>
+            <button onclick="generateAPIKey()" 
+                    class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors">
+                Generate New Key
+            </button>
+        </div>
+        <div class="p-6">
+            <div id="api-keys-container">
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path>
+                    </svg>
+                    <p>Loading API keys...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Extractions -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+        <div class="px-6 py-4 border-b border-gray-200">
+            <h2 class="text-lg font-semibold text-gray-900">Recent Extractions</h2>
+        </div>
+        <div class="p-6">
+            {% if extractions %}
+                <div class="space-y-4">
+                    {% for extraction in extractions %}
+                        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+                            <div class="flex-1">
+                                <p class="font-medium text-gray-900">{{ extraction.url }}</p>
+                                <p class="text-sm text-gray-500">{{ extraction.timestamp|date:"M d, Y H:i" }}</p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                    {% if extraction.status == 'completed' %}bg-green-100 text-green-800
+                                    {% elif extraction.status == 'pending' %}bg-yellow-100 text-yellow-800
+                                    {% else %}bg-red-100 text-red-800{% endif %}">
+                                    {{ extraction.status|title }}
+                                </span>
+                                <a href="{% url 'results' extraction.id %}" 
+                                   class="text-purple-600 hover:text-purple-700 font-medium">
+                                    View Results
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-8 text-gray-500">
+                    <svg class="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                    </svg>
+                    <p>No extractions yet</p>
+                    <p class="text-sm">Start by extracting images from a website URL.</p>
+                    <a href="{% url 'home' %}" 
+                       class="inline-block mt-4 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        Start Extracting
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- API Key Generation Modal -->
+<div id="api-key-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">Generate API Key</h3>
+            </div>
+            <div class="p-6">
+                <form id="api-key-form">
+                    <div class="mb-4">
+                        <label for="key-name" class="block text-sm font-medium text-gray-700 mb-2">
+                            Key Name
+                        </label>
+                        <input type="text" id="key-name" name="name" required
+                               placeholder="e.g., My Development Key"
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <p class="text-xs text-gray-500 mt-1">Choose a descriptive name to identify this key</p>
+                    </div>
+                    <div class="flex justify-end space-x-3">
+                        <button type="button" onclick="closeAPIKeyModal()"
+                                class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="submit"
+                                class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                            Generate Key
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- API Key Display Modal -->
+<div id="api-key-display-modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-lg w-full">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-medium text-gray-900">API Key Generated</h3>
+            </div>
+            <div class="p-6">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        Your API Key
+                    </label>
+                    <div class="flex">
+                        <input type="text" id="generated-key" readonly
+                               class="flex-1 px-3 py-2 border border-gray-300 rounded-l-lg bg-gray-50 font-mono text-sm">
+                        <button onclick="copyAPIKey()" 
+                                class="px-4 py-2 bg-purple-600 text-white rounded-r-lg hover:bg-purple-700 transition-colors">
+                            Copy
+                        </button>
+                    </div>
+                    <div class="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <div class="flex">
+                            <svg class="w-5 h-5 text-yellow-400 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                            </svg>
+                            <div class="text-sm text-yellow-800">
+                                <p class="font-medium">Important!</p>
+                                <p>This is the only time you'll see this key. Save it securely and don't share it.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4 class="text-sm font-medium text-gray-700 mb-2">How to use this API key:</h4>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <code class="text-sm text-gray-800">
+                            curl -H "X-API-Key: YOUR_API_KEY" http://localhost:8000/api/extract/
+                        </code>
+                    </div>
+                </div>
+                <div class="flex justify-end">
+                    <button onclick="closeAPIKeyDisplayModal()"
+                            class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                        I've Saved It
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// API Key Management JavaScript
+let apiKeys = [];
+
+// Load API keys on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadAPIKeys();
+});
+
+function loadAPIKeys() {
+    fetch('/api/keys/', {
+        credentials: 'include',  // Include session cookies
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to load API keys');
+        }
+        return response.json();
+    })
+    .then(data => {
+        apiKeys = data;
+        renderAPIKeys();
+    })
+    .catch(error => {
+        console.error('Error loading API keys:', error);
+        document.getElementById('api-keys-container').innerHTML = `
+            <div class="text-center py-8 text-red-500">
+                <p>Error loading API keys. Please refresh the page.</p>
+            </div>
+        `;
+    });
+}
+
+function renderAPIKeys() {
+    const container = document.getElementById('api-keys-container');
+    
+    if (apiKeys.length === 0) {
+        container.innerHTML = `
+            <div class="text-center py-8 text-gray-500">
+                <svg class="w-12 h-12 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1721 9z"></path>
+                </svg>
+                <p>No API keys yet</p>
+                <p class="text-sm">Generate your first API key to start using the API.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const keysHTML = apiKeys.map(key => `
+        <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
+            <div class="flex-1">
+                <div class="flex items-center space-x-3">
+                    <p class="font-medium text-gray-900">${key.name}</p>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${key.is_active ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                        ${key.is_active ? 'Active' : 'Revoked'}
+                    </span>
+                </div>
+                <p class="text-sm text-gray-500 font-mono">${key.prefix}...</p>
+                <div class="text-xs text-gray-400 mt-1">
+                    Created: ${new Date(key.created_at).toLocaleDateString()}
+                    ${key.last_used_at ? `• Last used: ${new Date(key.last_used_at).toLocaleDateString()}` : '• Never used'}
+                </div>
+            </div>
+            <div class="flex items-center space-x-2">
+                ${key.is_active ? `
+                    <button onclick="revokeAPIKey(${key.id})" 
+                            class="px-3 py-1 text-red-600 border border-red-300 rounded hover:bg-red-50 transition-colors text-sm">
+                        Revoke
+                    </button>
+                ` : ''}
+            </div>
+        </div>
+    `).join('');
+
+    container.innerHTML = `<div class="space-y-3">${keysHTML}</div>`;
+}
+
+function generateAPIKey() {
+    document.getElementById('api-key-modal').classList.remove('hidden');
+}
+
+function closeAPIKeyModal() {
+    document.getElementById('api-key-modal').classList.add('hidden');
+    document.getElementById('api-key-form').reset();
+}
+
+function closeAPIKeyDisplayModal() {
+    document.getElementById('api-key-display-modal').classList.add('hidden');
+    loadAPIKeys(); // Refresh the list
+}
+
+function copyAPIKey() {
+    const keyInput = document.getElementById('generated-key');
+    keyInput.select();
+    document.execCommand('copy');
+    
+    // Show feedback
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = 'Copied!';
+    button.classList.add('bg-green-600');
+    button.classList.remove('bg-purple-600');
+    
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('bg-green-600');
+        button.classList.add('bg-purple-600');
+    }, 2000);
+}
+
+function revokeAPIKey(keyId) {
+    if (!confirm('Are you sure you want to revoke this API key? This action cannot be undone.')) {
+        return;
+    }
+
+    fetch(`/api/keys/${keyId}/revoke/`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            loadAPIKeys(); // Refresh the list
+        } else {
+            alert('Error revoking API key: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(error => {
+        console.error('Error revoking API key:', error);
+        alert('Error revoking API key. Please try again.');
+    });
+}
+
+// Handle API key form submission
+document.getElementById('api-key-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    const keyName = formData.get('name');
+    
+    fetch('/api/keys/generate/', {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        },
+        body: JSON.stringify({ name: keyName })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.key) {
+            // Show the generated key
+            document.getElementById('generated-key').value = data.key;
+            closeAPIKeyModal();
+            document.getElementById('api-key-display-modal').classList.remove('hidden');
+        } else {
+            alert('Error generating API key: ' + (data.error || 'Unknown error'));
+        }
+    })
+    .catch(error => {
+        console.error('Error generating API key:', error);
+        alert('Error generating API key. Please try again.');
+    });
+});
+
+// Utility function to get CSRF token
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
+{% endblock %}
+

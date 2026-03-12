@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extract.pics API Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-menu {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-left: 4px solid #007bff;
+        }
+        
+        .nav-menu h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        .nav-menu a {
+            display: inline-block;
+            margin: 5px 10px 5px 0;
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu a:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,123,255,0.3);
+        }
+        
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #007bff;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+        }
+        
+        pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 15px 0;
+            border-left: 4px solid #007bff;
+            font-size: 0.9rem;
+        }
+        
+        code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background-color: #2d3748;
+            color: #e2e8f0;
+            padding: 3px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .endpoint {
+            margin-bottom: 40px;
+            padding: 25px;
+            border: 1px solid #e1e8ed;
+            border-radius: 12px;
+            background: #fafbfc;
+            transition: all 0.3s ease;
+        }
+        
+        .endpoint:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .endpoint-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .method {
+            font-weight: bold;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 25px;
+            margin-right: 15px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .endpoint-url {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 1.1rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+        
+        .get { background: linear-gradient(135deg, #48bb78, #38a169); }
+        .post { background: linear-gradient(135deg, #4299e1, #3182ce); }
+        .delete { background: linear-gradient(135deg, #f56565, #e53e3e); }
+        .put { background: linear-gradient(135deg, #ed8936, #dd6b20); }
+        
+        .auth-badge {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 10px 0;
+            border: 1px solid #cbd5e0;
+        }
+        
+        .auth-required {
+            background: #fed7d7;
+            color: #c53030;
+            border-color: #feb2b2;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .intro-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .intro-section h2 {
+            color: white;
+            border-bottom: 3px solid rgba(255,255,255,0.3);
+        }
+        
+        ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .copy-btn {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            float: right;
+            margin-top: -10px;
+        }
+        
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .endpoint-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .method {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Extract.pics API</h1>
+            <p>Complete API Documentation & Integration Guide</p>
+        </div>
+        
+        <div class="content">
+            <div class="nav-menu">
+                <h3>Quick Navigation</h3>
+                <a href="#authentication">Authentication</a>
+                <a href="#user-management">User Management</a>
+                <a href="#image-extraction">Image Extraction</a>
+                <a href="#api-keys">API Keys</a>
+                <a href="#examples">Code Examples</a>
+            </div>
+
+            <div class="intro-section">
+                <h2>Welcome to Extract.pics API</h2>
+                <p>This powerful API allows you to programmatically extract images from any web page, manage your extractions, and handle API keys for seamless integration. Perfect for developers building image processing applications, content management systems, or automated workflows.</p>
+            </div>
+
+            <div class="section" id="authentication">
+                <h2>Authentication</h2>
+                <p>Our API supports two authentication methods to suit different use cases:</p>
+                
+                <div class="highlight">
+                    <strong>JWT Tokens:</strong> Perfect for web applications with user sessions. Obtain tokens via login and include them in the Authorization header.
+                </div>
+                
+                <div class="highlight">
+                    <strong>API Keys:</strong> Ideal for server-to-server communication and automated scripts. Generate keys through the API and use them for direct access.
+                </div>
+                
+                <h3>JWT Authentication</h3>
+                <p>Include the access token in the <code>Authorization</code> header:</p>
+                <pre><code>Authorization: Bearer YOUR_ACCESS_TOKEN</code></pre>
+                
+                <h3>API Key Authentication</h3>
+                <p>Include your API Key in the <code>Authorization</code> header:</p>
+                <pre><code>Authorization: Api-Key YOUR_API_KEY</code></pre>
+            </div>
+
+            <div class="section" id="user-management">
+                <h2>User Management</h2>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/register/</span>
+                </div>
+                <p>Register a new user account and receive JWT tokens.</p>
+                <span class="auth-badge">No Authentication Required</span>
+                
+                <h4>Request Body:</h4>
+                <pre><code>{
+    "username": "your_username",
+    "email": "your_email@example.com",
+    "password": "your_password",
+    "password_confirm": "your_password"
+}</code></pre>
+                
+                <h4>Response:</h4>
+                <pre><code>{
+    "user": {
+        "id": 1,
+        "username": "your_username",
+        "email": "your_email@example.com"
+    },
+    "tokens": {
+        "refresh": "your_refresh_token",
+        "access": "your_access_token"
+    }
+}</code></pre>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/token/</span>
+                </div>
+                <p>Obtain JWT access and refresh tokens for existing users.</p>
+                <span class="auth-badge">No Authentication Required</span>
+                
+                <h4>Request Body:</h4>
+                <pre><code>{
+    "username": "your_username",
+    "password": "your_password"
+}</code></pre>
+                
+                <h4>Response:</h4>
+                <pre><code>{
+    "refresh": "your_refresh_token",
+    "access": "your_access_token"
+}</code></pre>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/token/refresh/</span>
+                </div>
+                <p>Refresh your JWT access token using a valid refresh token.</p>
+                <span class="auth-badge">No Authentication Required</span>
+                
+                <h4>Request Body:</h4>
+                <pre><code>{
+    "refresh": "your_refresh_token"
+}</code></pre>
+                
+                <h4>Response:</h4>
+                <pre><code>{
+    "access": "new_access_token"
+}</code></pre>
+            </div>
+            
+            </div>
+
+            <div class="section" id="image-extraction">
+                <h2>Image Extraction</h2>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/extract/</span>
+                </div>
+                <p>Start an image extraction process from a given URL. The extraction runs asynchronously in the background.</p>
+                <span class="auth-badge auth-required">JWT Token or API Key Required</span>
+                
+                <h4>Request Body:</h4>
+                <pre><code>{
+    "url": "https://example.com/page-with-images"
+}</code></pre>
+                
+                <h4>Response:</h4>
+                <pre><code>{
+    "extraction_id": 123,
+    "status": "pending",
+    "message": "Image extraction started"
+}</code></pre>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/extractions/</span>
+                </div>
+                <p>List all image extractions performed by the authenticated user.</p>
+                <span class="auth-badge auth-required">JWT Token or API Key Required</span>
+                
+                <h4>Response:</h4>
+                <pre><code>[
+    {
+        "id": 123,
+        "url": "https://example.com/page-with-images",
+        "status": "completed",
+        "timestamp": "2023-10-27T10:00:00Z",
+        "images": [
+            {
+                "id": 1,
+                "url": "https://example.com/image1.jpg",
+                "name": "image1",
+                "size": 12345,
+                "width": 800,
+                "height": 600,
+                "format": "jpeg"
+            }
+        ],
+        "image_count": 1
+    }
+]</code></pre>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/extractions/{id}/images/</span>
+                </div>
+                <p>Retrieve details of a specific extraction, including all extracted images.</p>
+                <span class="auth-badge auth-required">JWT Token or API Key Required</span>
+                
+                <h4>Path Parameters:</h4>
+                <ul>
+                    <li><code>id</code> (integer): The ID of the extraction</li>
+                </ul>
+                
+                <h4>Response:</h4>
+                <pre><code>{
+    "id": 123,
+    "url": "https://example.com/page-with-images",
+    "status": "completed",
+    "timestamp": "2023-10-27T10:00:00Z",
+    "images": [
+        {
+            "id": 1,
+            "url": "https://example.com/image1.jpg",
+            "name": "image1",
+            "size": 12345,
+            "width": 800,
+            "height": 600,
+            "format": "jpeg"
+        }
+    ],
+    "image_count": 1
+}</code></pre>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/images/{id}/download/</span>
+                </div>
+                <p>Download a specific image by its ID. Returns a redirect to the actual image URL.</p>
+                <span class="auth-badge auth-required">JWT Token or API Key Required</span>
+                
+                <h4>Path Parameters:</h4>
+                <ul>
+                    <li><code>id</code> (integer): The ID of the image</li>
+                </ul>
+                
+                <h4>Response:</h4>
+                <p>HTTP 302 Redirect to the image URL</p>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/images/bulk_download/</span>
+                </div>
+                <p>Download multiple images as a ZIP archive.</p>
+                <span class="auth-badge auth-required">JWT Token or API Key Required</span>
+                
+                <h4>Request Body:</h4>
+                <pre><code>{
+    "image_ids": [1, 2, 3, 4, 5]
+}</code></pre>
+                
+                <h4>Response:</h4>
+                <p>A ZIP file containing the requested images with appropriate Content-Disposition headers.</p>
+            </div>
+
+            <div class="section" id="api-keys">
+                <h2>API Key Management</h2>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method get">GET</span>
+                    <span class="endpoint-url">/api/keys/</span>
+                </div>
+                <p>List all API keys associated with the authenticated user.</p>
+                <span class="auth-badge auth-required">JWT Token Required</span>
+                
+                <h4>Response:</h4>
+                <pre><code>[
+    {
+        "id": 1,
+        "name": "My First Key",
+        "prefix": "sk_test_",
+        "created_at": "2023-10-27T10:00:00Z",
+        "last_used_at": null,
+        "is_active": true
+    }
+]</code></pre>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/keys/generate/</span>
+                </div>
+                <p>Generate a new API key for the authenticated user. The raw key is shown only once in the response.</p>
+                <span class="auth-badge auth-required">JWT Token Required</span>
+                
+                <h4>Request Body:</h4>
+                <pre><code>{
+    "name": "Key for My App"
+}</code></pre>
+                
+                <h4>Response:</h4>
+                <pre><code>{
+    "id": 2,
+    "name": "Key for My App",
+    "key": "sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "prefix": "sk_test_",
+    "created_at": "2023-10-27T10:00:00Z"
+}</code></pre>
+                
+                <div class="highlight">
+                    <strong>Important:</strong> Save the API key securely! It will not be shown again after this response.
+                </div>
+            </div>
+
+            <div class="endpoint">
+                <div class="endpoint-header">
+                    <span class="method post">POST</span>
+                    <span class="endpoint-url">/api/keys/{id}/revoke/</span>
+                </div>
+                <p>Revoke (deactivate) an existing API key.</p>
+                <span class="auth-badge auth-required">JWT Token Required</span>
+                
+                <h4>Path Parameters:</h4>
+                <ul>
+                    <li><code>id</code> (integer): The ID of the API key to revoke</li>
+                </ul>
+                
+                <h4>Response:</h4>
+                <pre><code>{
+    "message": "API key revoked successfully"
+}</code></pre>
+            </div>
+
+            <div class="section" id="examples">
+                <h2>Code Examples</h2>
+                
+                <h3>Python Example</h3>
+                <pre><code>import requests
+
+# First, get an access token
+login_response = requests.post('https://your-api-domain.com/api/token/', {
+    'username': 'your_username',
+    'password': 'your_password'
+})
+token = login_response.json()['access']
+
+# Extract images from a URL
+headers = {'Authorization': f'Bearer {token}'}
+extract_response = requests.post('https://your-api-domain.com/api/extract/', 
+    json={'url': 'https://example.com'}, 
+    headers=headers
+)
+extraction_id = extract_response.json()['extraction_id']
+
+# Check extraction results
+results = requests.get(f'https://your-api-domain.com/api/extractions/{extraction_id}/images/', 
+    headers=headers
+)
+print(results.json())</code></pre>
+
+                <h3>JavaScript Example</h3>
+                <pre><code>// Using fetch API
+const apiUrl = 'https://your-api-domain.com/api';
+
+// Get access token
+const loginResponse = await fetch(`${apiUrl}/token/`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        username: 'your_username',
+        password: 'your_password'
+    })
+});
+const { access: token } = await loginResponse.json();
+
+// Extract images
+const extractResponse = await fetch(`${apiUrl}/extract/`, {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({ url: 'https://example.com' })
+});
+const { extraction_id } = await extractResponse.json();
+
+// Get results
+const resultsResponse = await fetch(`${apiUrl}/extractions/${extraction_id}/images/`, {
+    headers: { 'Authorization': `Bearer ${token}` }
+});
+const results = await resultsResponse.json();
+console.log(results);</code></pre>
+
+                <h3>cURL Example</h3>
+                <pre><code># Get access token
+curl -X POST https://your-api-domain.com/api/token/ \
+  -H "Content-Type: application/json" \
+  -d '{"username": "your_username", "password": "your_password"}'
+
+# Extract images (replace TOKEN with actual token)
+curl -X POST https://your-api-domain.com/api/extract/ \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer TOKEN" \
+  -d '{"url": "https://example.com"}'
+
+# Get extraction results (replace EXTRACTION_ID with actual ID)
+curl -X GET https://your-api-domain.com/api/extractions/EXTRACTION_ID/images/ \
+  -H "Authorization: Bearer TOKEN"</code></pre>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Add copy functionality to code blocks
+        document.querySelectorAll('pre code').forEach((block) => {
+            const button = document.createElement('button');
+            button.className = 'copy-btn';
+            button.textContent = 'Copy';
+            button.onclick = () => {
+                navigator.clipboard.writeText(block.textContent);
+                button.textContent = 'Copied!';
+                setTimeout(() => button.textContent = 'Copy', 2000);
+            };
+            block.parentElement.appendChild(button);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
